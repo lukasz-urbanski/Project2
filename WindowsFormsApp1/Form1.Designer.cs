@@ -41,15 +41,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.radioDodawanie = new System.Windows.Forms.RadioButton();
+            this.radioModulo = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // RadioMnozenie
             // 
             this.RadioMnozenie.AutoSize = true;
-            this.RadioMnozenie.Location = new System.Drawing.Point(29, 43);
-            this.RadioMnozenie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RadioMnozenie.Location = new System.Drawing.Point(22, 35);
+            this.RadioMnozenie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RadioMnozenie.Name = "RadioMnozenie";
-            this.RadioMnozenie.Size = new System.Drawing.Size(90, 21);
+            this.RadioMnozenie.Size = new System.Drawing.Size(71, 17);
             this.RadioMnozenie.TabIndex = 0;
             this.RadioMnozenie.TabStop = true;
             this.RadioMnozenie.Text = "Mnożenie";
@@ -59,10 +61,10 @@
             // RadioDzielenie
             // 
             this.RadioDzielenie.AutoSize = true;
-            this.RadioDzielenie.Location = new System.Drawing.Point(29, 70);
-            this.RadioDzielenie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RadioDzielenie.Location = new System.Drawing.Point(22, 57);
+            this.RadioDzielenie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RadioDzielenie.Name = "RadioDzielenie";
-            this.RadioDzielenie.Size = new System.Drawing.Size(87, 21);
+            this.RadioDzielenie.Size = new System.Drawing.Size(68, 17);
             this.RadioDzielenie.TabIndex = 1;
             this.RadioDzielenie.TabStop = true;
             this.RadioDzielenie.Text = "Dzielenie";
@@ -72,10 +74,10 @@
             // RAdioPotegowanie
             // 
             this.RAdioPotegowanie.AutoSize = true;
-            this.RAdioPotegowanie.Location = new System.Drawing.Point(29, 98);
-            this.RAdioPotegowanie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RAdioPotegowanie.Location = new System.Drawing.Point(22, 80);
+            this.RAdioPotegowanie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RAdioPotegowanie.Name = "RAdioPotegowanie";
-            this.RAdioPotegowanie.Size = new System.Drawing.Size(110, 21);
+            this.RAdioPotegowanie.Size = new System.Drawing.Size(87, 17);
             this.RAdioPotegowanie.TabIndex = 2;
             this.RAdioPotegowanie.TabStop = true;
             this.RAdioPotegowanie.Text = "Potęgowanie";
@@ -85,10 +87,10 @@
             // RadioOdejmowanie
             // 
             this.RadioOdejmowanie.AutoSize = true;
-            this.RadioOdejmowanie.Location = new System.Drawing.Point(29, 125);
-            this.RadioOdejmowanie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RadioOdejmowanie.Location = new System.Drawing.Point(22, 102);
+            this.RadioOdejmowanie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RadioOdejmowanie.Name = "RadioOdejmowanie";
-            this.RadioOdejmowanie.Size = new System.Drawing.Size(111, 21);
+            this.RadioOdejmowanie.Size = new System.Drawing.Size(87, 17);
             this.RadioOdejmowanie.TabIndex = 3;
             this.RadioOdejmowanie.TabStop = true;
             this.RadioOdejmowanie.Text = "odejmowanie";
@@ -97,18 +99,18 @@
             // 
             // OperationCountTB
             // 
-            this.OperationCountTB.Location = new System.Drawing.Point(29, 348);
-            this.OperationCountTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.OperationCountTB.Location = new System.Drawing.Point(22, 283);
+            this.OperationCountTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.OperationCountTB.Name = "OperationCountTB";
-            this.OperationCountTB.Size = new System.Drawing.Size(87, 22);
+            this.OperationCountTB.Size = new System.Drawing.Size(66, 20);
             this.OperationCountTB.TabIndex = 4;
             // 
             // StartBT
             // 
-            this.StartBT.Location = new System.Drawing.Point(140, 335);
-            this.StartBT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.StartBT.Location = new System.Drawing.Point(105, 272);
+            this.StartBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StartBT.Name = "StartBT";
-            this.StartBT.Size = new System.Drawing.Size(95, 35);
+            this.StartBT.Size = new System.Drawing.Size(71, 28);
             this.StartBT.TabIndex = 5;
             this.StartBT.Text = "Start";
             this.StartBT.UseVisualStyleBackColor = true;
@@ -116,9 +118,10 @@
             // 
             // PathTB
             // 
-            this.PathTB.Location = new System.Drawing.Point(29, 400);
+            this.PathTB.Location = new System.Drawing.Point(22, 325);
+            this.PathTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PathTB.Name = "PathTB";
-            this.PathTB.Size = new System.Drawing.Size(749, 22);
+            this.PathTB.Size = new System.Drawing.Size(563, 20);
             this.PathTB.TabIndex = 6;
             // 
             // contextMenuStrip1
@@ -129,45 +132,75 @@
             // 
             // ErrorLogTB
             // 
-            this.ErrorLogTB.Location = new System.Drawing.Point(311, 42);
+            this.ErrorLogTB.Location = new System.Drawing.Point(233, 34);
+            this.ErrorLogTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ErrorLogTB.Multiline = true;
             this.ErrorLogTB.Name = "ErrorLogTB";
             this.ErrorLogTB.ReadOnly = true;
-            this.ErrorLogTB.Size = new System.Drawing.Size(467, 345);
+            this.ErrorLogTB.Size = new System.Drawing.Size(351, 281);
             this.ErrorLogTB.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 329);
+            this.label1.Location = new System.Drawing.Point(20, 267);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 17);
+            this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Ilość operacji";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 380);
+            this.label2.Location = new System.Drawing.Point(20, 309);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 17);
+            this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Ścieżka do XML";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(308, 22);
+            this.label3.Location = new System.Drawing.Point(231, 18);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 17);
+            this.label3.Size = new System.Drawing.Size(25, 13);
             this.label3.TabIndex = 11;
             this.label3.Text = "Log";
             // 
+            // radioDodawanie
+            // 
+            this.radioDodawanie.AutoSize = true;
+            this.radioDodawanie.Location = new System.Drawing.Point(22, 125);
+            this.radioDodawanie.Name = "radioDodawanie";
+            this.radioDodawanie.Size = new System.Drawing.Size(77, 17);
+            this.radioDodawanie.TabIndex = 12;
+            this.radioDodawanie.TabStop = true;
+            this.radioDodawanie.Text = "dodawanie";
+            this.radioDodawanie.UseVisualStyleBackColor = true;
+            this.radioDodawanie.CheckedChanged += new System.EventHandler(this.RadioDodawanie_CheckedChanged);
+            // 
+            // radioModulo
+            // 
+            this.radioModulo.AutoSize = true;
+            this.radioModulo.Location = new System.Drawing.Point(22, 149);
+            this.radioModulo.Name = "radioModulo";
+            this.radioModulo.Size = new System.Drawing.Size(59, 17);
+            this.radioModulo.TabIndex = 13;
+            this.radioModulo.TabStop = true;
+            this.radioModulo.Text = "modulo";
+            this.radioModulo.UseVisualStyleBackColor = true;
+            this.radioModulo.CheckedChanged += new System.EventHandler(this.RadioModulo_CheckedChanged);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.radioModulo);
+            this.Controls.Add(this.radioDodawanie);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -180,7 +213,7 @@
             this.Controls.Add(this.RadioDzielenie);
             this.Controls.Add(this.RadioMnozenie);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
@@ -204,6 +237,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RadioButton radioDodawanie;
+        private System.Windows.Forms.RadioButton radioModulo;
     }
 }
 

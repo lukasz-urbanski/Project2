@@ -42,30 +42,31 @@ namespace WindowsFormsApp1
             switch (operationtype)
             {
                 case "multiplication":
-
                     b1 = a * b;
-
                     break;
+
                 case "division":
                     b1 = Divide(a, b);
                     break;
 
                 case "exponentiation":
-
-
                     b1 = Math.Pow(a, b);
-
                     break;
+
                 case "subtraction":
-
-
                     b1 = a - b;
-
                     break;
+
+                case "adding":
+                    b1 = a + b;
+                    break;
+
+                case "modulo":
+                    b1 = a % b;
+                    break;
+
                 default:
-
                     throw new System.InvalidCastException();
-
                     break;
             }
 
@@ -134,7 +135,6 @@ namespace WindowsFormsApp1
                             b = pair.Item2;
                             Replicator(numberofoperations);
                         }
-
                     }
                     else
                     {
@@ -145,19 +145,12 @@ namespace WindowsFormsApp1
                 {
                     MessageBox.Show(String.Format("This: {0} is not an integer", OperationCountTB.Text));
                 }
-
-
             }
             else
             {
                 MessageBox.Show(String.Format("File under given path doesn't exist.\r\n{0}", PathTB));
             }
-
-
-
-
         }
-
         private void ReadXML(string path)
         {
             string logline = "Values in XML: \r\n";
@@ -184,8 +177,7 @@ namespace WindowsFormsApp1
                                     else
                                     {
 
-                                    }
-                                    
+                                    }                                    
                                 }
                                 break;
                         }
@@ -198,20 +190,14 @@ namespace WindowsFormsApp1
                     SaveLog(e.Message.ToString());
                 }
             }
-
             SaveLog(logline);
         }
-
-
-
         private void CombineAndSaveLog(int operation_no, int numberofoperations, string operationtype_string, double a, double b, string wynik)
         {
-
             //and is missing some formatting
             //WM: What kind of formating?
             string logLine = $"Operation : " + operation_no.ToString() + "/" + numberofoperations.ToString() + " | " + a.ToString() + operationtype_string + b.ToString() + " = " + wynik;
             SaveLog(logLine);
-
         }
         private void SaveLog(string message)
         {
@@ -222,32 +208,35 @@ namespace WindowsFormsApp1
                 file.WriteLine(message);
             }
         }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             operationtype = "multiplication";
             operationtype_string = "*";
-
         }
-
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             operationtype = "division";
             operationtype_string = "/";
         }
-
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             operationtype = "exponentiation";
             operationtype_string = "^";
         }
-
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             operationtype = "subtraction";
             operationtype_string = "-";
         }
-
-
+        private void RadioDodawanie_CheckedChanged(object sender, EventArgs e)
+        {
+            operationtype = "adding";
+            operationtype_string = "+";
+        }
+        private void RadioModulo_CheckedChanged(object sender, EventArgs e)
+        {
+            operationtype = "modulo";
+            operationtype_string = "%";
+        }
     }
 }

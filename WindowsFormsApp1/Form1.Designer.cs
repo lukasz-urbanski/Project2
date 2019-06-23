@@ -43,13 +43,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.radioDodawanie = new System.Windows.Forms.RadioButton();
             this.radioModulo = new System.Windows.Forms.RadioButton();
+            this.filesExtComboBox = new System.Windows.Forms.ComboBox();
+            this.errorLogPathTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.errorLogTextBox = new System.Windows.Forms.TextBox();
+            this.openErrorLogButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RadioMnozenie
             // 
             this.RadioMnozenie.AutoSize = true;
             this.RadioMnozenie.Location = new System.Drawing.Point(22, 35);
-            this.RadioMnozenie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RadioMnozenie.Margin = new System.Windows.Forms.Padding(2);
             this.RadioMnozenie.Name = "RadioMnozenie";
             this.RadioMnozenie.Size = new System.Drawing.Size(71, 17);
             this.RadioMnozenie.TabIndex = 0;
@@ -62,7 +67,7 @@
             // 
             this.RadioDzielenie.AutoSize = true;
             this.RadioDzielenie.Location = new System.Drawing.Point(22, 57);
-            this.RadioDzielenie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RadioDzielenie.Margin = new System.Windows.Forms.Padding(2);
             this.RadioDzielenie.Name = "RadioDzielenie";
             this.RadioDzielenie.Size = new System.Drawing.Size(68, 17);
             this.RadioDzielenie.TabIndex = 1;
@@ -75,7 +80,7 @@
             // 
             this.RAdioPotegowanie.AutoSize = true;
             this.RAdioPotegowanie.Location = new System.Drawing.Point(22, 80);
-            this.RAdioPotegowanie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RAdioPotegowanie.Margin = new System.Windows.Forms.Padding(2);
             this.RAdioPotegowanie.Name = "RAdioPotegowanie";
             this.RAdioPotegowanie.Size = new System.Drawing.Size(87, 17);
             this.RAdioPotegowanie.TabIndex = 2;
@@ -88,7 +93,7 @@
             // 
             this.RadioOdejmowanie.AutoSize = true;
             this.RadioOdejmowanie.Location = new System.Drawing.Point(22, 102);
-            this.RadioOdejmowanie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RadioOdejmowanie.Margin = new System.Windows.Forms.Padding(2);
             this.RadioOdejmowanie.Name = "RadioOdejmowanie";
             this.RadioOdejmowanie.Size = new System.Drawing.Size(87, 17);
             this.RadioOdejmowanie.TabIndex = 3;
@@ -100,7 +105,7 @@
             // OperationCountTB
             // 
             this.OperationCountTB.Location = new System.Drawing.Point(22, 283);
-            this.OperationCountTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OperationCountTB.Margin = new System.Windows.Forms.Padding(2);
             this.OperationCountTB.Name = "OperationCountTB";
             this.OperationCountTB.Size = new System.Drawing.Size(66, 20);
             this.OperationCountTB.TabIndex = 4;
@@ -108,7 +113,7 @@
             // StartBT
             // 
             this.StartBT.Location = new System.Drawing.Point(105, 272);
-            this.StartBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.StartBT.Margin = new System.Windows.Forms.Padding(2);
             this.StartBT.Name = "StartBT";
             this.StartBT.Size = new System.Drawing.Size(71, 28);
             this.StartBT.TabIndex = 5;
@@ -119,7 +124,7 @@
             // PathTB
             // 
             this.PathTB.Location = new System.Drawing.Point(22, 325);
-            this.PathTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PathTB.Margin = new System.Windows.Forms.Padding(2);
             this.PathTB.Name = "PathTB";
             this.PathTB.Size = new System.Drawing.Size(563, 20);
             this.PathTB.TabIndex = 6;
@@ -133,11 +138,11 @@
             // ErrorLogTB
             // 
             this.ErrorLogTB.Location = new System.Drawing.Point(233, 34);
-            this.ErrorLogTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ErrorLogTB.Margin = new System.Windows.Forms.Padding(2);
             this.ErrorLogTB.Multiline = true;
             this.ErrorLogTB.Name = "ErrorLogTB";
             this.ErrorLogTB.ReadOnly = true;
-            this.ErrorLogTB.Size = new System.Drawing.Size(351, 281);
+            this.ErrorLogTB.Size = new System.Drawing.Size(351, 132);
             this.ErrorLogTB.TabIndex = 8;
             // 
             // label1
@@ -194,11 +199,62 @@
             this.radioModulo.UseVisualStyleBackColor = true;
             this.radioModulo.CheckedChanged += new System.EventHandler(this.RadioModulo_CheckedChanged);
             // 
+            // filesExtComboBox
+            // 
+            this.filesExtComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.filesExtComboBox.FormattingEnabled = true;
+            this.filesExtComboBox.Location = new System.Drawing.Point(22, 173);
+            this.filesExtComboBox.Name = "filesExtComboBox";
+            this.filesExtComboBox.Size = new System.Drawing.Size(121, 21);
+            this.filesExtComboBox.TabIndex = 14;
+            // 
+            // errorLogPathTextBox
+            // 
+            this.errorLogPathTextBox.Location = new System.Drawing.Point(22, 201);
+            this.errorLogPathTextBox.Name = "errorLogPathTextBox";
+            this.errorLogPathTextBox.Size = new System.Drawing.Size(121, 20);
+            this.errorLogPathTextBox.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(231, 173);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "ErrorLog";
+            // 
+            // errorLogTextBox
+            // 
+            this.errorLogTextBox.Location = new System.Drawing.Point(233, 189);
+            this.errorLogTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.errorLogTextBox.Multiline = true;
+            this.errorLogTextBox.Name = "errorLogTextBox";
+            this.errorLogTextBox.ReadOnly = true;
+            this.errorLogTextBox.Size = new System.Drawing.Size(351, 132);
+            this.errorLogTextBox.TabIndex = 16;
+            // 
+            // openErrorLogButton
+            // 
+            this.openErrorLogButton.Location = new System.Drawing.Point(22, 228);
+            this.openErrorLogButton.Name = "openErrorLogButton";
+            this.openErrorLogButton.Size = new System.Drawing.Size(121, 23);
+            this.openErrorLogButton.TabIndex = 18;
+            this.openErrorLogButton.Text = "Open ErrorLog";
+            this.openErrorLogButton.UseVisualStyleBackColor = true;
+            this.openErrorLogButton.Click += new System.EventHandler(this.OpenErrorLogButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.openErrorLogButton);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.errorLogTextBox);
+            this.Controls.Add(this.errorLogPathTextBox);
+            this.Controls.Add(this.filesExtComboBox);
             this.Controls.Add(this.radioModulo);
             this.Controls.Add(this.radioDodawanie);
             this.Controls.Add(this.label3);
@@ -213,7 +269,7 @@
             this.Controls.Add(this.RadioDzielenie);
             this.Controls.Add(this.RadioMnozenie);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
@@ -239,6 +295,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioDodawanie;
         private System.Windows.Forms.RadioButton radioModulo;
+        private System.Windows.Forms.ComboBox filesExtComboBox;
+        private System.Windows.Forms.TextBox errorLogPathTextBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox errorLogTextBox;
+        private System.Windows.Forms.Button openErrorLogButton;
     }
 }
 

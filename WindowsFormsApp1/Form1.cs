@@ -9,21 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.IO;
-
+using System.Diagnostics;
 
 namespace WindowsFormsApp1
 {
-
-
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
+            this.filesExtComboBox.DataSource = Enum.GetValues(typeof(ErrorsHandling.FilesExtenstions));
+            this.filesExtComboBox.SelectedIndex = 0;
         }
 
         int numberofoperations = 1;
-
 
         string operationtype = "multiplication";
 
@@ -33,8 +32,6 @@ namespace WindowsFormsApp1
         double valB;
         string operationtype_string = "*";
         List<Tuple<double, double>> pairs = new List<Tuple<double, double>>();
-
-
 
         public double Calculate(double a, double b, string operationtype)
         {
@@ -69,9 +66,7 @@ namespace WindowsFormsApp1
                     throw new System.InvalidCastException();
                     break;
             }
-
             return b1;
-
         }
 
         private double Divide(double a, double b)
@@ -88,7 +83,6 @@ namespace WindowsFormsApp1
             double current_b;
 
             for (int j = 0; j < numberofoperations; j++)
-
             {
                 current_b = b;
                 try
@@ -111,16 +105,14 @@ namespace WindowsFormsApp1
                 }
                 //you are only catching specific types of errors. What if a Null reference error happens?
                 // WM:does this solve your comment?
-
-
             }
-
         }
-
-
         private void StartBT_Click(object sender, EventArgs e)
-
         {
+            string filepath = ErrorLogFilePathValidation.isValid(this.errorLogPathTextBox.Text);
+
+            ErrorsHandling.FilesExtenstions extenstionSelected =
+                    (ErrorsHandling.FilesExtenstions)Enum.Parse(typeof(ErrorsHandling.FilesExtenstions), filesExtComboBox.Text);
             pairs.Clear();
             if (File.Exists(PathTB.Text))
             {
@@ -138,17 +130,24 @@ namespace WindowsFormsApp1
                     }
                     else
                     {
-                        MessageBox.Show("XML doesn;t contain any valid pairs of 'a' and 'b' attributes");
+                        ErrorsHandling.ShowMessageAndSaveLogWithErrors("XML doesn;t contain any valid pairs of 'a' and 'b' attributes", filepath, extenstionSelected);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(String.Format("This: {0} is not an integer", OperationCountTB.Text));
+                    ErrorsHandling.ShowMessageAndSaveLogWithErrors(String.Format("This: {0} is not an integer", OperationCountTB.Text), filepath, extenstionSelected);
                 }
             }
             else
             {
-                MessageBox.Show(String.Format("File under given path doesn't exist.\r\n{0}", PathTB));
+                if (!String.IsNullOrEmpty(PathTB.Text))
+                {
+                    ErrorsHandling.ShowMessageAndSaveLogWithErrors($"File under path {PathTB.Text} doesn't exist.", filepath, extenstionSelected);
+                }
+                else
+                {
+                    ErrorsHandling.ShowMessageAndSaveLogWithErrors($"Path to file wasn't selected.", filepath, extenstionSelected);
+                }
             }
         }
         private void ReadXML(string path)
@@ -157,7 +156,7 @@ namespace WindowsFormsApp1
             int count = 0;
             double valA = 0;
             double valB = 0;
-            using (XmlTextReader reader = new XmlTextReader(path)) 
+            using (XmlTextReader reader = new XmlTextReader(path))
             {
                 try
                 {
@@ -168,7 +167,8 @@ namespace WindowsFormsApp1
                             case XmlNodeType.Element:
                                 if (reader.Name == "value")
                                 {
-                                    if (Double.TryParse(reader.GetAttribute("a"), out valA) && Double.TryParse(reader.GetAttribute("b"), out valB))
+                                    //if (Double.TryParse(reader.GetAttribute("a"), out valA) && Double.TryParse(reader.GetAttribute("b"), out valB))
+                                    if (Double.TryParse(reader.GetAttribute("first"), out valA) && Double.TryParse(reader.GetAttribute("second"), out valB))
                                     {
                                         count++;
                                         pairs.Add(Tuple.Create(valA, valB));
@@ -177,17 +177,19 @@ namespace WindowsFormsApp1
                                     else
                                     {
 
-                                    }                                    
+                                    }
                                 }
                                 break;
                         }
                     }
                 }
-
                 catch (XmlException e)
                 {
                     MessageBox.Show(e.Message.ToString());
-                    SaveLog(e.Message.ToString());
+                    string filepath = ErrorLogFilePathValidation.isValid(this.errorLogPathTextBox.Text);
+                    ErrorsHandling.FilesExtenstions extenstionSelected =
+                            (ErrorsHandling.FilesExtenstions)Enum.Parse(typeof(ErrorsHandling.FilesExtenstions), filesExtComboBox.Text);
+                    ErrorsHandling.ShowMessageAndSaveLogWithErrors(e.Message.ToString(), filepath, extenstionSelected);
                 }
             }
             SaveLog(logline);
@@ -237,6 +239,16 @@ namespace WindowsFormsApp1
         {
             operationtype = "modulo";
             operationtype_string = "%";
+        }
+
+        private void OpenErrorLogButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Process.Start(ofd.FileName);
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ namespace WindowsFormsApp1
 {
     class ErrorLogFilePathValidation
     {
-        public static string isValid(string pathToValid)
+        public static string IsValid(string pathToValid)
         {
             try
             {
@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
                 return pathToValid;
             }catch
             {
-                return @"C:\";
+                return AppDomain.CurrentDomain.BaseDirectory;
             }
         }
     }

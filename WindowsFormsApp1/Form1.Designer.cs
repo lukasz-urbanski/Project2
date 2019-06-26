@@ -61,7 +61,7 @@
             this.RadioMnozenie.TabStop = true;
             this.RadioMnozenie.Text = "Mnożenie";
             this.RadioMnozenie.UseVisualStyleBackColor = true;
-            this.RadioMnozenie.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.RadioMnozenie.CheckedChanged += new System.EventHandler(this.RadioButton1_CheckedChanged);
             // 
             // RadioDzielenie
             // 
@@ -74,7 +74,7 @@
             this.RadioDzielenie.TabStop = true;
             this.RadioDzielenie.Text = "Dzielenie";
             this.RadioDzielenie.UseVisualStyleBackColor = true;
-            this.RadioDzielenie.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.RadioDzielenie.CheckedChanged += new System.EventHandler(this.RadioButton2_CheckedChanged);
             // 
             // RAdioPotegowanie
             // 
@@ -87,7 +87,7 @@
             this.RAdioPotegowanie.TabStop = true;
             this.RAdioPotegowanie.Text = "Potęgowanie";
             this.RAdioPotegowanie.UseVisualStyleBackColor = true;
-            this.RAdioPotegowanie.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.RAdioPotegowanie.CheckedChanged += new System.EventHandler(this.RadioButton3_CheckedChanged);
             // 
             // RadioOdejmowanie
             // 
@@ -100,7 +100,7 @@
             this.RadioOdejmowanie.TabStop = true;
             this.RadioOdejmowanie.Text = "odejmowanie";
             this.RadioOdejmowanie.UseVisualStyleBackColor = true;
-            this.RadioOdejmowanie.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            this.RadioOdejmowanie.CheckedChanged += new System.EventHandler(this.RadioButton4_CheckedChanged);
             // 
             // OperationCountTB
             // 

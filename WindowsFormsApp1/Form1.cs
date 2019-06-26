@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 using System.Xml;
-using System.IO;
-using System.Diagnostics;
 
 namespace WindowsFormsApp1
 {
@@ -28,14 +22,12 @@ namespace WindowsFormsApp1
 
         double a;
         double b;
-        double valA;
-        double valB;
         string operationtype_string = "*";
         List<Tuple<double, double>> pairs = new List<Tuple<double, double>>();
 
         public double Calculate(double a, double b, string operationtype)
         {
-            double b1 = 0;
+            double b1;
             switch (operationtype)
             {
                 case "multiplication":
@@ -63,8 +55,7 @@ namespace WindowsFormsApp1
                     break;
 
                 default:
-                    throw new System.InvalidCastException();
-                    break;
+                    throw new InvalidCastException();
             }
             return b1;
         }
@@ -91,15 +82,15 @@ namespace WindowsFormsApp1
                     CombineAndSaveLog(j + 1, numberofoperations, operationtype_string, a, current_b, b.ToString());
 
                 }
-                catch (DivideByZeroException e)
+                catch (DivideByZeroException)
                 {
                     CombineAndSaveLog(j + 1, numberofoperations, operationtype_string, a, current_b, " Divide by zero");
                 }
-                catch (InvalidCastException e)
+                catch (InvalidCastException)
                 {
                     CombineAndSaveLog(j + 1, numberofoperations, operationtype_string, a, current_b, " Incorrect calculation type");
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     SaveLog("i can't imagine what must happen to show this");
                 }
@@ -109,7 +100,7 @@ namespace WindowsFormsApp1
         }
         private void StartBT_Click(object sender, EventArgs e)
         {
-            string filepath = ErrorLogFilePathValidation.isValid(this.errorLogPathTextBox.Text);
+            string filepath = ErrorLogFilePathValidation.IsValid(this.errorLogPathTextBox.Text);
 
             ErrorsHandling.FilesExtenstions extenstionSelected =
                     (ErrorsHandling.FilesExtenstions)Enum.Parse(typeof(ErrorsHandling.FilesExtenstions), filesExtComboBox.Text);
@@ -152,10 +143,27 @@ namespace WindowsFormsApp1
         }
         private void ReadXML(string path)
         {
-            string logline = "Values in XML: \r\n";
+            string logline = "\r\nValues in XML: \r\n";
             int count = 0;
-            double valA = 0;
-            double valB = 0;
+
+            try
+            {
+                pairs = NewXmlReader.GetNodes(path);
+                foreach (Tuple<double, double> tuple in pairs)
+                {
+                    logline += String.Format("{0}: a={1}, b={2}\r\n", count, tuple.Item1.ToString(), tuple.Item2.ToString());
+                }
+            }
+            catch (XmlException e)
+            {
+                MessageBox.Show(e.Message.ToString());
+                string filepath = ErrorLogFilePathValidation.IsValid(this.errorLogPathTextBox.Text);
+                ErrorsHandling.FilesExtenstions extenstionSelected =
+                        (ErrorsHandling.FilesExtenstions)Enum.Parse(typeof(ErrorsHandling.FilesExtenstions), filesExtComboBox.Text);
+                ErrorsHandling.ShowMessageAndSaveLogWithErrors(e.Message.ToString(), filepath, extenstionSelected);
+            }
+            #region Previous XML Reader
+            /*
             using (XmlTextReader reader = new XmlTextReader(path))
             {
                 try
@@ -167,12 +175,13 @@ namespace WindowsFormsApp1
                             case XmlNodeType.Element:
                                 if (reader.Name == "value")
                                 {
-                                    //if (Double.TryParse(reader.GetAttribute("a"), out valA) && Double.TryParse(reader.GetAttribute("b"), out valB))
                                     if (Double.TryParse(reader.GetAttribute("first"), out valA) && Double.TryParse(reader.GetAttribute("second"), out valB))
                                     {
                                         count++;
+                                        
                                         pairs.Add(Tuple.Create(valA, valB));
                                         logline += String.Format("{0}: a={1}, b={2}\r\n", count, valA.ToString(), valB.ToString());
+                                        
                                     }
                                     else
                                     {
@@ -186,13 +195,17 @@ namespace WindowsFormsApp1
                 catch (XmlException e)
                 {
                     MessageBox.Show(e.Message.ToString());
-                    string filepath = ErrorLogFilePathValidation.isValid(this.errorLogPathTextBox.Text);
+                    string filepath = ErrorLogFilePathValidation.IsValid(this.errorLogPathTextBox.Text);
                     ErrorsHandling.FilesExtenstions extenstionSelected =
                             (ErrorsHandling.FilesExtenstions)Enum.Parse(typeof(ErrorsHandling.FilesExtenstions), filesExtComboBox.Text);
                     ErrorsHandling.ShowMessageAndSaveLogWithErrors(e.Message.ToString(), filepath, extenstionSelected);
                 }
             }
+            */
+            #endregion
+
             SaveLog(logline);
+
         }
         private void CombineAndSaveLog(int operation_no, int numberofoperations, string operationtype_string, double a, double b, string wynik)
         {
@@ -210,22 +223,22 @@ namespace WindowsFormsApp1
                 file.WriteLine(message);
             }
         }
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton1_CheckedChanged(object sender, EventArgs e)
         {
             operationtype = "multiplication";
             operationtype_string = "*";
         }
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton2_CheckedChanged(object sender, EventArgs e)
         {
             operationtype = "division";
             operationtype_string = "/";
         }
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton3_CheckedChanged(object sender, EventArgs e)
         {
             operationtype = "exponentiation";
             operationtype_string = "^";
         }
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton4_CheckedChanged(object sender, EventArgs e)
         {
             operationtype = "subtraction";
             operationtype_string = "-";
